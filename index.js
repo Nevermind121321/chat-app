@@ -9,8 +9,7 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename)
 const server = createServer(app);
-
-
+const port = process.env.port || 8000;
 const io = new Server(server);
 
 app.get("/",(req,res)=>{
@@ -31,6 +30,7 @@ io.on("connection",(socket) => {
     })
 }) 
 
-server.listen(8000,()=>{
+
+server.listen(port,()=>{
     console.log("Listening to port");
 })
